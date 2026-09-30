@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Create Comic | ComicCraft{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <span class="badge">AI</span>
+        <h1>Turn an idea into a comic.</h1>
+        <p>Describe your story and ComicCraft creates panels, narration, dialogue, images, and a PDF.</p>
+    </div>
+</section>
+
+<form class="card form-card" action="/generate" method="post">
+    <label>Story Prompt</label>
+    <textarea name="story_prompt" required placeholder="A brave fox exploring an enchanted forest..."></textarea>
+
+    <div class="grid">
+        <div>
+            <label>Main Character</label>
+            <input name="character_name" value="Alex">
+        </div>
+        <div>
+            <label>Setting</label>
+            <select name="setting">
+                <option>forest</option>
+                <option>school</option>
+                <option>space</option>
+                <option>city</option>
+                <option>village</option>
+                <option>underwater world</option>
+            </select>
+        </div>
+        <div>
+            <label>Tone</label>
+            <select name="tone">
+                <option>funny</option>
+                <option>light-hearted</option>
+                <option>dramatic</option>
+                <option>poetic</option>
+            </select>
+        </div>
+        <div>
+            <label>Art Style</label>
+            <select name="art_style">
+                <option>comic book</option>
+                <option>anime</option>
+                <option>pixel art</option>
+                <option>realistic</option>
+                <option>cartoon</option>
+            </select>
+        </div>
+        <div>
+            <label>Number of Panels</label>
+            <select name="panels">
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit">✨ Generate Comic</button>
+</form>
+
+<div class="card note">
+    <strong>Fallback design:</strong>
+    Gemini is optional. If Gemini does not respond, ComicCraft tries Ollama if available,
+    then uses its built-in local story generator..
+</div>
+{% endblock %}
